@@ -20,6 +20,8 @@ public class ModBlocks {
     public static void initModels() {
         newWorkbench.initModel();
     }
+
+
 	/*
 	public static void register() {
 		registerBlock(newWorkbench);

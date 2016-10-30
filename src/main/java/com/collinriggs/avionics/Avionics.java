@@ -23,9 +23,7 @@ public class Avionics {
 	
 	@EventHandler
 	public void preInit(FMLPreInitializationEvent event) {
-		proxy.preInit();
-
-		ModBlocks.init();
+		proxy.preInit(event);
 		//ModBlocks.register();
 		
 		NetworkRegistry.INSTANCE.registerGuiHandler(this, new GuiHandler());
@@ -33,7 +31,7 @@ public class Avionics {
 
 	@EventHandler
 	public void init(FMLInitializationEvent event) {
-		proxy.init();
+		proxy.init(event);
 		//Crafting
 	}
 }
