@@ -1,0 +1,16 @@
+[
+{
+  "modid": "Avionics",
+  "name": "AvionTweaks",
+  "description": "This is a mod that tweaks certain gameplay mechanics and adds a custom crafting table! Made by Blynd3, Bread10, and A Deathly Touch, in Association with Team Avion.",
+  "version": "${version}",
+  "mcversion": "${mcversion}",
+  "url": "",
+  "updateUrl": "",
+  "authorList": ["A Deathly Touch, Blyd3, Bread10, Team Avion"],
+  "credits": "Team Avion",
+  "logoFile": "",
+  "screenshots": [],
+  "dependencies": []
+}
+]
