@@ -1,0 +1,9 @@
+{
+    "parent": "block/cube_all",
+    "textures": {
+      "particle": "main:blocks/workbench_side",
+      "bottom": "main:blocks/workbench_bottom",
+      "top": "main:blocks/workbench_top",
+      "side": "main:blocks/workbench_side"
+    }
+}
