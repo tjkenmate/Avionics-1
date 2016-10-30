@@ -1,6 +1,8 @@
 package com.collinriggs.avionics.blocks;
 
 import net.minecraft.block.Block;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemBlock;
 import net.minecraftforge.fml.common.registry.GameRegistry;
@@ -8,12 +10,16 @@ import static net.minecraftforge.fml.common.registry.GameRegistry.registerTileEn
 
 public class ModBlocks {
 
-	public static Block newWorkbench;
+    public static NewCraftingTable newWorkbench;
 
-	public static void init() {
-		newWorkbench = new NewCraftingTable();
-	}
+    public static void init() {
+        newWorkbench = new NewCraftingTable();
+    }
 
+    @SideOnly(Side.CLIENT)
+    public static void initModels() {
+        newWorkbench.initModel();
+    }
 	/*
 	public static void register() {
 		registerBlock(newWorkbench);
