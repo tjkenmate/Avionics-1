@@ -17,7 +17,7 @@ import net.minecraft.world.World;
  * - TheDragonTeam
  */
 public class GuiNewWorkbench extends GuiContainer {
-    private static final ResourceLocation ARP_WORKBENCH_GUI_TEXTURES = new ResourceLocation("modsquad:textures/gui/container/gui_workbench.png");
+    private static final ResourceLocation ARP_WORKBENCH_GUI_TEXTURES = new ResourceLocation("avionics:textures/gui/container/gui_workbench.png");//TODO replace armorplus with your mod and the location
 
     public GuiNewWorkbench(InventoryPlayer playerInv, World worldIn) {
         super(new ContainerNewWorkbench(playerInv, worldIn));
@@ -29,8 +29,8 @@ public class GuiNewWorkbench extends GuiContainer {
      * Draw the foreground layer for the GuiContainer (everything in front of the items)
      */
     protected void drawGuiContainerForegroundLayer(int mouseX, int mouseY) {
-        this.fontRendererObj.drawString(I18n.format("container.modsquad.workbench", new Object[0]), 28, 6, 4210752);
-        this.fontRendererObj.drawString(I18n.format("container.modsquad.inventory", new Object[0]), 8, this.ySize - 96 + 2, 4210752);
+        this.fontRendererObj.drawString(I18n.format("container.avionics.workbench", new Object[0]), 28, 6, 4210752);
+        this.fontRendererObj.drawString(I18n.format("container.avionics.inventory", new Object[0]), 8, this.ySize - 96 + 2, 4210752);
     }
 
     /**

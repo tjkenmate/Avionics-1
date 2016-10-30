@@ -45,7 +45,7 @@ public class TileEntityNewWorkbench extends TileEntity implements IInventory {
 
     @Override
     public String getName() {
-        return this.hasCustomName() ? this.customName : "container.modsquad.workbench";
+        return this.hasCustomName() ? this.customName : "container.avionics.workbench";
     }
 
     @Override
@@ -106,6 +106,7 @@ public class TileEntityNewWorkbench extends TileEntity implements IInventory {
             return null;
         }
     }
+
 
     @Override
     public void setInventorySlotContents(int index, ItemStack stack) {
