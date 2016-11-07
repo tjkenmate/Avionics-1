@@ -1,9 +1,9 @@
 package com.collinriggs.avionics;
 
 import com.collinriggs.avionics.blocks.GuiHandler;
-import com.collinriggs.avionics.blocks.ModBlocks;
 import com.collinriggs.avionics.proxy.CommonProxy;
 
+import net.minecraftforge.fml.common.Loader;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.Mod.EventHandler;
 import net.minecraftforge.fml.common.Mod.Instance;
@@ -28,7 +28,9 @@ public class Avionics {
 		//ModBlocks.init();
 		//ModBlocks.register();
 		
-		NetworkRegistry.INSTANCE.registerGuiHandler(this, new GuiHandler());
+		//NetworkRegistry.INSTANCE.registerGuiHandler(this, new GuiHandler());
+		//if(Loader.isModLoaded("JEI"))
+		//	proxy.registerJeiHandler();
 	}
 
 	@EventHandler

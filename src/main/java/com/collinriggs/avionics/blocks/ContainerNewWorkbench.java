@@ -1,29 +1,49 @@
-/*
- * Copyright (c) TheDragonTeam 2016.
- */
-
 package com.collinriggs.avionics.blocks;
 
 import javax.annotation.Nullable;
 
+import com.collinriggs.avionics.recipe.WorkbenchCraftingManager;
+
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
+import net.minecraft.init.Items;
 import net.minecraft.inventory.Container;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.inventory.InventoryCraftResult;
 import net.minecraft.inventory.InventoryCrafting;
 import net.minecraft.inventory.Slot;
 import net.minecraft.inventory.SlotCrafting;
+import net.minecraft.item.ItemBook;
 import net.minecraft.item.ItemStack;
+import net.minecraft.item.crafting.CraftingManager;
 import net.minecraft.world.World;
+import net.minecraftforge.items.ItemStackHandler;
+import net.minecraftforge.items.SlotItemHandler;
 
 public class ContainerNewWorkbench extends Container {
 
-    /**
-     * The crafting matrix inventory (3x3).
-     */
     public InventoryCrafting craftMatrix = new InventoryCrafting(this, 3, 3);
     public IInventory craftResult = new InventoryCraftResult();
+    public ItemStackHandler bookSlot = new ItemStackHandler() {
+        @Override
+        public void setStackInSlot(int slot, ItemStack stack) {
+            if (false == ContainerNewWorkbench.this.isValidBook(stack)) {
+                return;
+            }
+            super.setStackInSlot(slot, stack);
+            ContainerNewWorkbench.this.onCraftMatrixChanged(ContainerNewWorkbench.this.craftMatrix);
+        }
+
+        @Override
+        public ItemStack insertItem(int slot, ItemStack stack, boolean simulate) {
+            if (false == ContainerNewWorkbench.this.isValidBook(stack)) {
+                return stack;
+            }
+            ItemStack result = super.insertItem(slot, stack, simulate);
+            ContainerNewWorkbench.this.onCraftMatrixChanged(ContainerNewWorkbench.this.craftMatrix);
+            return result;
+        }
+    };
 
     private World worldObj;
 
@@ -48,18 +68,30 @@ public class ContainerNewWorkbench extends Container {
         }
 
         this.onCraftMatrixChanged(this.craftMatrix);
+
+        this.addSlotToContainer(new SlotItemHandler(this.bookSlot, 0, 8, 35));
+    }
+
+    private boolean isValidBook(ItemStack stack) {
+        return (stack != null) && (stack.getItem() == Items.BOOK);
     }
 
     public boolean canInteractWith(EntityPlayer playerIn) {
         return true;
     }
 
-    /**
-     * Callback for when the crafting matrix is changed.
-     */
     public void onCraftMatrixChanged(IInventory inventoryIn) {
-        this.craftResult.setInventorySlotContents(0, WorkbenchCraftingManager.getInstance().findMatchingRecipe(this.craftMatrix, this.worldObj));
-
+        ItemStack toCraft = null;
+        if (this.isValidBook(this.bookSlot.getStackInSlot(0))) {
+            // only handle custom recipes if we have a book
+            toCraft = WorkbenchCraftingManager.getInstance().findMatchingRecipe(this.craftMatrix, this.worldObj);
+        }
+        if (toCraft == null)
+        {
+            // test for Vanilla Recipe
+            toCraft = CraftingManager.getInstance().findMatchingRecipe(this.craftMatrix, this.worldObj);
+        }
+        this.craftResult.setInventorySlotContents(0, toCraft);
     }
 
     @Nullable
@@ -69,12 +101,8 @@ public class ContainerNewWorkbench extends Container {
             getSlotFromInventory(inv, slotIn).inventory.clear();
         }
         return super.getSlotFromInventory(inv, slotIn);
-
     }
 
-    /**
-     * Called when the container is closed.
-     */
     public void onContainerClosed(EntityPlayer playerIn) {
         super.onContainerClosed(playerIn);
 
@@ -86,12 +114,13 @@ public class ContainerNewWorkbench extends Container {
                     playerIn.dropItem(itemstack, false);
                 }
             }
+            ItemStack bookStack = this.bookSlot.getStackInSlot(0);
+            if (bookStack != null) {
+                playerIn.dropItem(bookStack, false);
+            }
         }
     }
 
-    /**
-     * Take a stack from the specified inventory slot.
-     */
     @Nullable
     public ItemStack transferStackInSlot(EntityPlayer playerIn, int index) {
         ItemStack itemstack = null;
@@ -135,10 +164,6 @@ public class ContainerNewWorkbench extends Container {
         return itemstack;
     }
 
-    /**
-     * Called to determine if the current slot is valid for the stack merging (double-click) code. The stack passed in
-     * is null for the initial slot that was double-clicked.
-     */
     public boolean canMergeSlot(ItemStack stack, Slot slotIn) {
         return slotIn.inventory != this.craftResult && super.canMergeSlot(stack, slotIn);
     }
