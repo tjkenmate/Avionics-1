@@ -1,7 +1,7 @@
 package com.collinriggs.avionics.blocks;
 
 /**
- * Created by Jeremy on 11/6/2016.
+ * Created by Deathly on 11/6/2016.
  */
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockWorkbench;
@@ -17,6 +17,7 @@ import net.minecraft.util.EnumHand;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
+import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 import net.minecraftforge.fml.relauncher.Side;
 
 import javax.annotation.Nullable;
@@ -40,5 +41,6 @@ public class a extends BlockWorkbench {
     @Override
     public boolean onBlockActivated(World worldIn, BlockPos pos, IBlockState state, EntityPlayer playerIn, EnumHand hand, @Nullable ItemStack heldItem, EnumFacing side, float hitX, float hitY, float hitZ) {
         return false;
+
     }
 }

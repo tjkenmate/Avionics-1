@@ -3,9 +3,7 @@ package com.collinriggs.avionics.utils;
 import com.collinriggs.avionics.jeicompat.ICompatibility;
 
 /**
- * net.thedragonteam.armorplus.compat.jei
- * ArmorPlus created by sokratis12GR on 6/21/2016 10:54 PM.
- * - TheDragonTeam
+ * Created by Deathly
  */
 public class JustEnoughItemsCompatability implements ICompatibility {
     @Override

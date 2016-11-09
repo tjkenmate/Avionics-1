@@ -7,9 +7,7 @@ import com.collinriggs.avionics.utils.JustEnoughItemsCompatability;
 import java.util.ArrayList;
 
 /**
- * net.thedragonteam.armorplus.registry
- * ArmorPlus created by sokratis12GR on 6/22/2016 12:20 AM.
- * - TheDragonTeam
+ * Created by Deathly
  */
 public class ModCompatability {
     private static ArrayList<ICompatibility> compatibilities = new ArrayList<ICompatibility>();

@@ -22,9 +22,7 @@ import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 
 /**
- * net.thedragonteam.armorplus.compat.jei.benches
- * ArmorPlus created by sokratis12GR on 6/21/2016 11:57 PM.
- * - TheDragonTeam
+ * Created by Deathly
  */
 public class WorkbenchRecipeCategory implements IRecipeCategory {
 

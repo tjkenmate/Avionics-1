@@ -1,7 +1,7 @@
 package com.collinriggs.avionics.jeicompat;
 
 /**
- * Created by Jeremy on 11/5/2016.
+ * Created by Deathly on 11/5/2016.
  */
 public interface ICompatibility {
     /**

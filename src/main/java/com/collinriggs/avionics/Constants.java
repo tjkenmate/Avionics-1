@@ -7,9 +7,7 @@ package com.collinriggs.avionics;
 
 
 /**
- * net.thedragonteam.armorplus.api
- * ArmorPlus created by sokratis12GR on 6/21/2016 11:11 PM.
- * - TheDragonTeam
+ * Created by Deathly
  */
 public class Constants {
     public static class Compat {
